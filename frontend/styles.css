@@ -23,4 +23,28 @@ body {
     right: 10px;
     z-index: 9999;
   }
-  
+
+/* Add your custom styles here */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  opacity: 0.9;
+  z-index: 1000;
+}
+
+.toast-success {
+  background-color: #4caf50;
+}
+
+.toast-error {
+  background-color: #f44336;
+}
+
+.toast.show {
+  display: block;
+}
