@@ -2,9 +2,15 @@
   document.addEventListener('DOMContentLoaded', () => {
     const ordersTable = document.getElementById('ordersTable');
     const toastContainer = document.getElementById('toast-container');
+    
+    if (!ordersTable || !toastContainer) {
+      console.error('Required elements are missing from the DOM.');
+      return;
+    }
+
     let loading = true;
     let deliveringOrderId = null;
-  
+
     // Function to show toast notifications
     function showToast(message, type = 'error') {
       const toast = document.createElement('div');
@@ -15,7 +21,7 @@
         toast.remove();
       }, 3000);
     }
-  
+
     // Fetch orders from the API
     const fetchOrders = async () => {
       try {
@@ -36,7 +42,7 @@
         loading = false;
       }
     };
-  
+
     // Render orders in the table
     const renderOrders = (orders) => {
       ordersTable.innerHTML = '';
@@ -65,7 +71,7 @@
         const response = await fetch(`https://adminside-lo8s.onrender.com/moveToCompleteOrders/${orderId}`, {
           method: 'POST',
         });
-  
+
         if (response.ok) {
           // Successfully moved to completed
           const rows = ordersTable.querySelectorAll('tr');
@@ -74,7 +80,7 @@
               row.remove();
             }
           });
-  
+
           showToast("Order Delivered Successfully", 'success');
         } else {
           let errorMessage = 'Failed to move order to completed';
@@ -96,7 +102,7 @@
         deliveringOrderId = null; // Reset after processing
       }
     };
-  
+
     // Fetch orders when the page loads
     fetchOrders();
   });
