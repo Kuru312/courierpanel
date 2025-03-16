@@ -1,0 +1,26 @@
+/* Styling for the Courier Panel */
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .header h2 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .order-table table {
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  button[disabled] {
+    background-color: #ddd;
+  }
+  
+  #toast-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 9999;
+  }
+  
